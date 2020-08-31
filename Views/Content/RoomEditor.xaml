@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:HomeConnect.CustomElement"
+             mc:Ignorable="d"
+             x:Class="HomeConnect.Views.Content.RoomEditor">
+  <ContentView.Content>
+        <ListView x:Name="RoomListViewEdit"
+                    x:FieldModifier="public"
+                    VerticalOptions="FillAndExpand"
+                    Grid.Row="1" RowHeight="65" RefreshControlColor="Transparent" 
+                    ItemsSource="{Binding RoomUIsColl}"
+                    SeparatorVisibility="None"
+                    Margin="0,-5,0,0"
+                    HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never"
+                    SelectionMode="None">
+            <ListView.Header>
+                <Grid HeightRequest="50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="Add.png" WidthRequest="30" HorizontalOptions="Center"  VerticalOptions="Center"/>
+                    <Label Text="Créer une nouvelle pièce" 
+                               HorizontalOptions="Center" VerticalOptions="Center"
+                               FontSize="20"
+                               Grid.Column="1"
+                               Style="{StaticResource Info}" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                                Tapped="TapGestureRecognizer_Tapped"
+                                NumberOfTapsRequired="1" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Spacing="0">
+                            <Line HeightRequest="1" BackgroundColor="White"/>
+
+                            <Grid  Margin="0" Padding="0" VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Source="{Binding Source}" WidthRequest="35" HeightRequest="35"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Margin="5"/>
+                                <Label Grid.Column="1" Text="{Binding Name}" 
+                                        HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                        HorizontalOptions="StartAndExpand" VerticalOptions="Center" 
+                                        FontSize="20" Style="{StaticResource Info}"/>
+                                <Label Grid.Column="2" Text="{Binding Description}" 
+                                        HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                        HorizontalOptions="StartAndExpand" VerticalOptions="Center" 
+                                        FontSize="14" Style="{StaticResource Info}"/>
+                                
+                                <local:RemoveButton x:Name="RemoveButton"
+                                                    MyID="{Binding ID}"                                                   
+                                                    Source="less.png" 
+                                                    Grid.Column="3" 
+                                                    Margin="10"
+                                                    WidthRequest="30" HeightRequest="30" 
+                                                    Aspect="AspectFit" BackgroundColor="Transparent"
+                                                    Clicked="RemoveButton_Clicked"/>
+                            </Grid >
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+      
+    </ContentView.Content>
+</ContentView>

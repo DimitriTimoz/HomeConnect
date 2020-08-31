@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "SldYKhw4XghrFiY4EPRWaKqPAdA+gwKpCsiMRwjNSr8ivY2uNsZrtdxe4f9g9dF6gf4lUhboq9BkWzxjhbOpkQ==",
+  "success": true,
+  "projectFilePath": "I:\\HomeConnect\\HomeConnect\\HomeConnect\\HomeConnect\\HomeConnect.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dimit\\.nuget\\packages\\microcharts\\0.9.0\\microcharts.0.9.0.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\microcharts.forms\\0.9.1\\microcharts.forms.0.9.1.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\skiasharp\\2.80.1\\skiasharp.2.80.1.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\skiasharp.views.forms\\2.80.1\\skiasharp.views.forms.2.80.1.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\syncfusion.licensing\\18.2.0.46\\syncfusion.licensing.18.2.0.46.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\syncfusion.xamarin.core\\18.2.0.46\\syncfusion.xamarin.core.18.2.0.46.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\syncfusion.xamarin.sfgauge\\18.2.0.46\\syncfusion.xamarin.sfgauge.18.2.0.46.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\dimit\\.nuget\\packages\\xamarin.forms\\4.7.0.1179\\xamarin.forms.4.7.0.1179.nupkg.sha512"
+  ],
+  "logs": []
+}

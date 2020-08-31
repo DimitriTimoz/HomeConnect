@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HomeConnect.App">
+    <Application.Resources>
+        <Style x:Key="Info" TargetType="Label">
+            <Setter Property="TextColor" Value="#ffffff" />
+            <Setter Property="FontFamily" Value="ArialRoundedMT" />
+        </Style>
+        <Style x:Key="Title"
+               TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="Lemon"/>
+        </Style>
+        <Style x:Key="ButtonStyle"
+               TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#00A8FF"/>
+            <Setter Property="CornerRadius" Value="18"/>
+            <Setter Property="CornerRadius" Value="18"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            <Setter Property="WidthRequest" Value="225"/>
+            
+        </Style>
+
+    </Application.Resources>
+</Application>

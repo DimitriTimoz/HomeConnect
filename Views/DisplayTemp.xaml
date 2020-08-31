@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms" 
+             xmlns:graph="clr-namespace:HomeConnect.Views.Content"
+             mc:Ignorable="d"
+             x:Class="HomeConnect.Views.DisplayTemp"
+             Title="Température">
+    <ContentPage.Content>
+        <Grid>
+            <gradient:SfGradientView>
+                <gradient:SfGradientView.BackgroundBrush>
+                    <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <gradient:SfGradientStop Color="#31CEFF" Offset="0.0" />
+                            <gradient:SfGradientStop Color="#29ACD6" Offset="0.5" />
+                            <gradient:SfGradientStop Color="#196780" Offset="1.0"/>
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </gradient:SfGradientView.BackgroundBrush>
+            </gradient:SfGradientView>
+            <StackLayout>
+       
+                <graph:ActualTemp Grid.Row="0"/>
+                <graph:GraphTemp x:Name="graph" Grid.Row="1" HeightRequest="200"/>
+               
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

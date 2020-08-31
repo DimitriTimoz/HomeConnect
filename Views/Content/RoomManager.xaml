@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:edit="clr-namespace:HomeConnect.Views.Content"
+             mc:Ignorable="d"
+             x:Class="HomeConnect.Views.Content.RoomManager">
+  <ContentView.Content>
+        <Grid VerticalOptions="FillAndExpand" Margin="0,10,0,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Down" Swiped="SwipeGestureRecognizer_Swiped"/>
+            </Grid.GestureRecognizers>
+            
+            <Grid HeightRequest="55" HorizontalOptions="Center" ColumnSpacing="40" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                    <ColumnDefinition Width="55"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Source="Home.png"  Grid.Column="0"/>
+                <Image Source="ROOM.png" Grid.Column="1"/>
+            </Grid>
+            <StackLayout Spacing="0" Grid.Row="0" Margin="0,55,0,0">
+                <Label Text="Crée ou supprimer une pièce de votre choix" Style="{StaticResource Info}"
+                       Margin="0,20,0,15"
+                       x:Name="lbIndic"
+                       HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="22" WidthRequest="250"/>
+                <Line HeightRequest="1" BackgroundColor="#00A8FF" WidthRequest="50" />
+            </StackLayout>
+
+            <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
+                <edit:RoomEditor Grid.Row="0" x:Name="roomEditor" IsVisible="true" x:FieldModifier="public" />
+                <edit:RoomAdd Grid.Row="0" x:Name="roomAdd" IsVisible="false" x:FieldModifier="public" />
+            </Grid>  
+            
+            <Button VerticalOptions="EndAndExpand"
+                x:Name="ValidateButton"
+                Grid.Row="2" 
+                Style="{StaticResource ButtonStyle}"
+                Text="Valider"
+                WidthRequest="255"
+                HeightRequest="35"
+                HorizontalOptions="Center"
+                Margin="0,0,0,20"
+                Clicked="ValidateButton_Clicked"
+                />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

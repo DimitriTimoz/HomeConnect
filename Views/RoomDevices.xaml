@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms" xmlns:local="clr-namespace:HomeConnect.CustomElement"
+             mc:Ignorable="d"
+             Title="Appareils"
+             x:Class="HomeConnect.Views.RoomDevices">
+    <ContentPage.Content>
+        <Grid>
+            <Grid>
+                <gradient:SfGradientView>
+                    <gradient:SfGradientView.BackgroundBrush>
+                        <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="#31CEFF" Offset="0.0" />
+                                <gradient:SfGradientStop Color="#29ACD6" Offset="0.5" />
+                                <gradient:SfGradientStop Color="#196780" Offset="1.0"/>
+                            </gradient:SfLinearGradientBrush.GradientStops>
+                        </gradient:SfLinearGradientBrush>
+                    </gradient:SfGradientView.BackgroundBrush>
+                </gradient:SfGradientView>
+            </Grid>
+            <ListView RowHeight="130" SeparatorColor="Transparent" ItemTapped="DevicesListView_ItemTapped"
+                      ItemsSource="{Binding DeviceUIsColl}" SelectionMode="None" x:Name="DevicesListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame HorizontalOptions="Fill"  
+                                   VerticalOptions="Fill" 
+                                   Padding="0" Margin="12.5" 
+                                   BackgroundColor="#00506A" CornerRadius="20">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" Aspect="AspectFit" HeightRequest="58" WidthRequest="70" Source="{Binding Source}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Style="{StaticResource Info}" VerticalOptions="Start" Margin="0,15,0,0" Text="{Binding Name}" FontSize="28"/>
+                                        <Label TextColor="White" VerticalOptions="Start" FontSize="16" Margin="0,0,0,0"  Text="{Binding Description}"/>
+                                    </StackLayout>
+                                    <Switch IsVisible="{Binding Switchable}"  Grid.Column="1" IsToggled="{Binding State}" VerticalOptions="Center" HorizontalOptions="End" OnColor="#00A8FF" Scale="1.6"  Margin="0,0,30,0" ThumbColor="Blue" >
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="On">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="ThumbColor"
+                                                            Value="#00A8FF" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Off">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="ThumbColor"
+                                                         Value="#fffff" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Switch>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Frame BackgroundColor="#00506A"  VerticalOptions="FillAndExpand" CornerRadius="30" Padding="30" Margin="3,3,3,-30"
+                    x:Name="Expander" >
+                <Grid VerticalOptions="Start"  >
+                    <Grid.GestureRecognizers>
+                        <SwipeGestureRecognizer Swiped="SwipeGestureRecognizer_Swiped" />
+                    </Grid.GestureRecognizers>
+                    <Grid x:Name="header" HeightRequest="250"  VerticalOptions="End"  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="Voulez vous ajouter un appareil à cette pièce ?"
+                                    Grid.Row="0"
+                                    Margin="10,0,10,0"
+                                    Style="{StaticResource Info}"
+                                    HorizontalTextAlignment="Center"
+                                    FontSize="24"
+                                    HorizontalOptions="Center"
+                                    FontAttributes="Bold"
+                                />
+                        <Grid HeightRequest="55" HorizontalOptions="Center" ColumnSpacing="40" 
+                                    VerticalOptions="Fill" Margin="0,10,0,0" 
+                                    Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55"></ColumnDefinition>
+                                <ColumnDefinition Width="55"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="plug.png" Grid.Column="0"/>
+                            <Image Source="temperature.png" Grid.Column="1"/>
+                        </Grid>
+
+                        <Button Grid.Row="2"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                x:Name="ValidateButton"
+                                Text="Ajouter" 
+                                Style="{StaticResource ButtonStyle}"
+                                Clicked="ValidateButton_Clicked"
+                                TextColor="White"/>
+                    </Grid>
+                    <StackLayout x:Name="Content" Spacing="0" HeightRequest="750" VerticalOptions="FillAndExpand" IsVisible="false">
+                        <Grid HorizontalOptions="Center" ColumnSpacing="40" 
+                               VerticalOptions="Fill" Margin="0,10,0,0" 
+                                Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="55"></ColumnDefinition>
+                                <ColumnDefinition Width="55"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="plug.png" Grid.Column="0"/>
+                            <Image Source="temperature.png" Grid.Column="1"/>
+                        </Grid>
+                        <Label Text="Ajoute ou retire un appareil à une pièce." Style="{StaticResource Info}"
+                               Margin="0,20,0,15"
+                               x:Name="lbIndic"
+                               HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="22" WidthRequest="250"/>
+                        <Line HeightRequest="1" BackgroundColor="#00A8FF" WidthRequest="50" />
+                        <ListView x:Name="ListEditDevices" RowHeight="65" VerticalOptions="StartAndExpand" SelectionMode="None" 
+                                  ItemsSource="{Binding DeviceUIsCollToRoom}">
+                                <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Spacing="0">
+                                            <Grid  Margin="0" Padding="0" VerticalOptions="FillAndExpand">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                                    <ColumnDefinition Width="170"></ColumnDefinition>
+                                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image Source="{Binding Source}" WidthRequest="35" HeightRequest="35"
+                                                        HorizontalOptions="Center"
+                                                        VerticalOptions="Center"
+                                                        Margin="5"/>
+                                                <Label Grid.Column="1" Text="{Binding Name}"
+                                                        HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                                        HorizontalOptions="StartAndExpand" VerticalOptions="Center" 
+                                                        FontSize="20" Style="{StaticResource Info}"/>
+                                        
+                                                <local:RemoveButton x:Name="EditStatButton"
+                                                                    MyID="{Binding ID}"                                                   
+                                                                    Source="{Binding OperationLogo}" 
+                                                                    Grid.Column="3" 
+                                                                    Margin="10"
+                                                                    VerticalOptions="Center" HorizontalOptions="Center"
+                                                                    WidthRequest="30" HeightRequest="30" 
+                                                                    Clicked="EditStatButton_Clicked"
+                                                                    Aspect="AspectFit" BackgroundColor="Transparent"/>
+                                            </Grid >
+                                            <Line HeightRequest="1" BackgroundColor="White"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>mono</x:String>
+                                    <x:String>monodroid</x:String>
+                                    
+                                </x:Array>
+                            </ListView.ItemsSource>
+                        </ListView>
+                        <Button Text="Valider" Style="{StaticResource ButtonStyle}" 
+                                HorizontalOptions="Center" VerticalOptions="EndAndExpand"
+                                Clicked="Button_Clicked"
+                                Margin="20"/>
+                    </StackLayout>
+                </Grid>
+                
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

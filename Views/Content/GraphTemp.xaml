@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             mc:Ignorable="d"
+             x:Class="HomeConnect.Views.Content.GraphTemp">
+    <ContentView.Content>
+            <Frame CornerRadius="20" HeightRequest="300" VerticalOptions="Start" Padding="5" Margin="5" >
+            <ScrollView x:Name="Scroll" x:FieldModifier="public" Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="300" >
+                    <forms:ChartView x:Name="Chart2" HeightRequest="300" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  />
+                </ScrollView>
+            </Frame>
+        </ContentView.Content>
+</ContentView>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:HomeConnect.CustomElement"
+             mc:Ignorable="d"
+             x:Class="HomeConnect.Views.Content.RoomAdd">
+    <ContentView.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#2AB0DB" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
+      <StackLayout>
+            <Label Text="Saisissez un nom de pièce:"
+                   TextColor="White"
+                   Margin="0,5"
+                   FontSize="16"/>
+            <local:RoundedEntry x:Name="RoomNameEditor"
+                                BackgroundColor="#003C50" Placeholder="Exemple: Chambre de George" 
+                                TextColor="White" PlaceholderColor="#12708E"
+                                MaxLength="20"/>
+            <Label Text="Sélectionnez un icône:"
+                   TextColor="White"
+                   Margin="0,5"
+                   FontSize="16"/>
+            <Frame BackgroundColor="#003C50"
+                   CornerRadius="15"
+                   Padding="0"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+                <CollectionView x:Name="CollectionSelector"
+                            SelectionMode="Single"
+                            BackgroundColor="#003C50"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid BackgroundColor="Transparent" Padding="10"  WidthRequest="40" Margin="5">
+                                <Image Source="{Binding Source}" HeightRequest="45" WidthRequest="45"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="4"
+                                         Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+
+                </CollectionView>
+            </Frame>
+            
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

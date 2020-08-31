@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="HomeConnect.Views.ListHubs"
+             Title="Liste des appareils détectés">
+   
+    <ContentPage.Content>
+        <Grid>
+            <Grid>
+                <gradient:SfGradientView>
+                    <gradient:SfGradientView.BackgroundBrush>
+                        <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="#31CEFF" Offset="0.0" />
+                                <gradient:SfGradientStop Color="#29ACD6" Offset="0.5" />
+                                <gradient:SfGradientStop Color="#196780" Offset="1.0"/>
+                            </gradient:SfLinearGradientBrush.GradientStops>
+                        </gradient:SfLinearGradientBrush>
+                    </gradient:SfGradientView.BackgroundBrush>
+                </gradient:SfGradientView>
+            </Grid>
+            <StackLayout Spacing="0" Orientation="Vertical">
+                <Button Text="Add" HorizontalOptions="EndAndExpand" Clicked="Button_Clicked"/>
+                <ListView x:Name="ListDevices" RowHeight="74" SeparatorColor="Transparent" SelectionMode="None" ItemTapped="ListDevices_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+                                    <Label Text="{Binding Name}" WidthRequest="325" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TextColor="White" FontSize="26" />
+                                    <BoxView VerticalOptions="End" HorizontalOptions="Center" HeightRequest="2" WidthRequest="350" BackgroundColor="White"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

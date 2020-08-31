@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms" xmlns:edit="clr-namespace:HomeConnect.Views.Content"
+             mc:Ignorable="d"
+             Title="Pièces"
+             x:Class="HomeConnect.Views.RoomList">
+    <ContentPage.Content>
+        <Grid>
+            <Grid>
+                <gradient:SfGradientView>
+                    <gradient:SfGradientView.BackgroundBrush>
+                        <gradient:SfLinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                            <gradient:SfLinearGradientBrush.GradientStops>
+                                <gradient:SfGradientStop Color="#31CEFF" Offset="0.0" />
+                                <gradient:SfGradientStop Color="#29ACD6" Offset="0.5" />
+                                <gradient:SfGradientStop Color="#196780" Offset="1.0"/>
+                            </gradient:SfLinearGradientBrush.GradientStops>
+                        </gradient:SfLinearGradientBrush>
+                    </gradient:SfGradientView.BackgroundBrush>
+                </gradient:SfGradientView>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <ListView x:Name="RoomsListView" RowHeight="130" SeparatorColor="Transparent" SelectionMode="None" ItemTapped="RoomsListView_ItemTapped"
+                      VerticalOptions="Start"
+                      HeightRequest="450"
+                          ItemsSource="{Binding RoomUIsColl}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame HorizontalOptions="Fill"  
+                                       VerticalOptions="Fill" 
+                                       Padding="0" Margin="12.5" 
+                                       BackgroundColor="#00506A" CornerRadius="20">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="75"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" WidthRequest="52" HeightRequest="52" Source="{Binding Source}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0,0,5,0"/>
+                                        <StackLayout Grid.Column="1">
+                                            <Label Style="{StaticResource Info}" VerticalOptions="Start" Margin="0,15,0,0" Text="{Binding Name}" FontSize="28"/>
+                                            <Label TextColor="White" VerticalOptions="Start" FontSize="16" Margin="2,0,0,0"  Text="{Binding Description}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Frame BackgroundColor="#00506A"  VerticalOptions="FillAndExpand" CornerRadius="30" Padding="30" Margin="3,3,3,-30"
+                       x:Name="Expander">
+                    <Grid VerticalOptions="Start">
+                        <Grid x:Name="header" HeightRequest="250"  VerticalOptions="End" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Voulez vous ajouter une nouvelle pièce ?"
+                                    Grid.Row="0"
+                                    Margin="10,0,10,0"
+                                    Style="{StaticResource Info}"
+                                    HorizontalTextAlignment="Center"
+                                    FontSize="24"
+                                    HorizontalOptions="Center"
+                                    FontAttributes="Bold"
+                                />
+                            <Grid HeightRequest="55" HorizontalOptions="Center" ColumnSpacing="40" 
+                                    VerticalOptions="Fill" Margin="0,10,0,0" 
+                                    Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="55"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"></ColumnDefinition>
+                                    <ColumnDefinition Width="55"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Home.png" Grid.Column="0"/>
+                                <Image Source="ROOM.png" Grid.Column="1"/>
+                            </Grid>
+                       
+                            <Button Grid.Row="2"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                x:Name="ValidateButton"
+                                Text="Ajouter" 
+                                Style="{StaticResource ButtonStyle}"
+                                Clicked="ValidateButton_Clicked"
+                                TextColor="White"/>
+                        </Grid>
+                        <edit:RoomManager Grid.Row="0" x:Name="RoomManager"  
+                                        IsVisible="false"
+                                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                    </Grid>
+                    
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
